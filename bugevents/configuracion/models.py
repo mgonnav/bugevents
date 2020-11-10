@@ -85,5 +85,8 @@ class Material(models.Model):
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)
     descripcion = models.CharField(max_length=200)
 
+    class Meta:
+        verbose_name_plural = "Materiales"
+
     def __str__(self):
         return f"{self.descripcion}" 

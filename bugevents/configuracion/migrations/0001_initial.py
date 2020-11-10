@@ -46,13 +46,13 @@ class Migration(migrations.Migration):
                 ('nombre', models.CharField(max_length=10)),
                 ('hora_inicio', models.TimeField()),
                 ('hora_fin', models.TimeField()),
-                ('actividad', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='eventos.actividad')),
-                ('ambiente', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='eventos.ambiente')),
+                ('actividad', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='configuracion.actividad')),
+                ('ambiente', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='configuracion.ambiente')),
             ],
         ),
         migrations.AddField(
             model_name='actividad',
             name='evento',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='eventos.evento'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='configuracion.evento'),
         ),
     ]

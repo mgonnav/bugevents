@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('eventos', '0003_auto_20201015_1347'),
+        ('configuracion', '0003_auto_20201015_1347'),
     ]
 
     operations = [
@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('descripcion', models.CharField(max_length=200)),
-                ('actividad', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='eventos.actividad')),
+                ('actividad', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='configuracion.actividad')),
             ],
         ),
     ]

@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('eventos', '0001_initial'),
+        ('configuracion', '0001_initial'),
     ]
 
     operations = [
@@ -68,6 +68,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='turno',
             name='ponentes',
-            field=models.ManyToManyField(to='eventos.Ponente'),
+            field=models.ManyToManyField(to='configuracion.Ponente'),
         ),
     ]

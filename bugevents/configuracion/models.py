@@ -91,12 +91,14 @@ class Turno(models.Model):
     def __str__(self):
         return f"{self.nombre}"
 
+
 '''
 Material -> Entidad del sistema 
 Clase relacionada -> CD37 [Entity]
 '''
 class Material(models.Model):
     nombre = models.CharField(max_length=50)
+    descripcion = models.CharField(null=True, blank=True, max_length=100)
 
     class Meta:
         verbose_name_plural = "Materiales"

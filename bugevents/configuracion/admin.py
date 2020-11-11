@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import Ambiente, Evento, Actividad, Ponente, Turno, Material
-from .forms import AmbienteForm, EventoForm, TurnoForm, MaterialForm
+from .forms import AmbienteForm, EventoForm, TurnoForm
 
 
 class AmbienteAdmin(admin.ModelAdmin):
@@ -31,9 +31,7 @@ class TurnoAdmin(admin.ModelAdmin):
 admin.site.register(Turno, TurnoAdmin)
 
 
-class MaterialAdmin(admin.ModelAdmin):
-    form = MaterialForm
-admin.site.register(Material,MaterialAdmin)
+admin.site.register(Material)
 
 
 class TurnoInline(admin.TabularInline):
@@ -46,6 +44,4 @@ class ActividadAdmin(admin.ModelAdmin):
 
     def get_model_perms(self, request):
         return {}
-
-
 admin.site.register(Actividad, ActividadAdmin)

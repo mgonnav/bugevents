@@ -30,13 +30,27 @@ class Evento(models.Model):
 
 
 '''
+Modelo Relacional -> EN23
+'''
+class TipoActividad(models.Model):
+    nombre_tipo = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name = "Tipo de actividad"
+        verbose_name_plural = "Tipos de actividades"
+
+    def __str__(self):
+        return f"{self.nombre_tipo}"
+
+
+'''
 Actividad -> Entidad del sistema
 Clase relacionada -> CD01 [Entity]
 '''
 class Actividad(models.Model):
     nombre = models.CharField(max_length=80)
-    tipo = models.CharField(max_length=30)
     evento = models.ForeignKey(Evento,  on_delete=models.CASCADE)
+    tipo = models.ForeignKey(TipoActividad, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = "Actividades"
@@ -70,8 +84,8 @@ class Turno(models.Model):
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)
     ambiente = models.ForeignKey(Ambiente, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=15)
-    hora_inicio = models.TimeField()
-    hora_fin = models.TimeField()
+    hora_inicio = models.TimeField(default=timezone.now)
+    hora_fin = models.TimeField(default=timezone.now)
     ponentes = models.ManyToManyField(Ponente)
 
     def __str__(self):
@@ -82,8 +96,7 @@ Material -> Entidad del sistema
 Clase relacionada -> CD37 [Entity]
 '''
 class Material(models.Model):
-    actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)
-    descripcion = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=50)
 
     class Meta:
         verbose_name_plural = "Materiales"

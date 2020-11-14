@@ -11,6 +11,9 @@ class Paquete(models.Model):
     precio_base = models.FloatField()
     actividades = models.ManyToManyField(Actividad)
 
+    def __str__(self):
+        return f"{self.nombre} a {self.precio_base} soles."
+
 
 """ 
 Promocion -> Entidad del sistema
@@ -24,3 +27,6 @@ class Promocion(models.Model):
 
     class Meta:
         verbose_name_plural = "Promociones"
+
+    def __str__(self):
+        return f"{self.nombre} para {self.paquete}"

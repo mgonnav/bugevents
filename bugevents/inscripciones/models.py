@@ -5,6 +5,7 @@ from configuracion.models import Actividad
 '''
 Paquete -> Entidad del sistema
 Clase relacionada -> CD17 [Entity]
+Modelo relacional -> EN11
 '''
 class Paquete(models.Model):
     nombre = models.CharField(max_length=20)
@@ -18,6 +19,7 @@ class Paquete(models.Model):
 """ 
 Promocion -> Entidad del sistema
 clase relacionada -> CD07 [Entity]
+Modelo relacional -> EN16
 """
 class Promocion(models.Model):
     nombre = models.CharField(max_length=50)

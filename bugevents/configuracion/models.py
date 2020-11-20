@@ -5,6 +5,7 @@ from django.utils import timezone
 '''
 Ambiente -> Entidad del sistema
 Clase relacionada -> CD24 [Entity]
+Modelo Relacional -> EN07
 '''
 class Ambiente(models.Model):
     nombre = models.CharField(max_length=30)
@@ -18,6 +19,7 @@ class Ambiente(models.Model):
 '''
 Evento -> Entidad del sistema
 Clase relacionada -> CD83 [Entity]
+Modelo Relacional -> EN04
 '''
 class Evento(models.Model):
     nombre = models.CharField(max_length=80)
@@ -44,24 +46,9 @@ class TipoActividad(models.Model):
 
 
 '''
-Actividad -> Entidad del sistema
-Clase relacionada -> CD01 [Entity]
-'''
-class Actividad(models.Model):
-    nombre = models.CharField(max_length=80)
-    evento = models.ForeignKey(Evento,  on_delete=models.CASCADE)
-    tipo = models.ForeignKey(TipoActividad, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name_plural = "Actividades"
-
-    def __str__(self):
-        return f"{self.tipo}: {self.nombre}."
-
-
-'''
 Ponente -> Entidad del sistema
 Clase relacionada -> CD73 [Entity]
+Modelo Relacional -> EN09
 '''
 class Ponente(models.Model):
     nombre = models.CharField(max_length=30)
@@ -77,8 +64,66 @@ class Ponente(models.Model):
 
 
 '''
+Material -> Entidad del sistema 
+Clase relacionada -> CD37 [Entity]
+Modelo Relacional -> EN21
+'''
+class Material(models.Model):
+    nombre = models.CharField(max_length=50)
+    descripcion = models.CharField(null=True, blank=True, max_length=100)
+
+    class Meta:
+        verbose_name_plural = "Materiales"
+
+    def __str__(self):
+        return f"{self.nombre}"
+
+
+'''
+Catalogo -> Entidad del sistema 
+Clase relacionada -> CD54 [Entity]
+Modelo Relacional -> EN19
+'''
+class Catalogo(models.Model):
+    descripcion = models.CharField(max_length=50)
+    materiales = models.ManyToManyField(Material, through='Item')
+
+    def __str__(self):
+        return f"{self.descripcion}"
+
+
+'''
+Modelo Relacional -> EN20
+'''
+class Item(models.Model):
+    catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE)
+    material = models.ForeignKey(Material, on_delete=models.CASCADE)
+    cantidad = models.IntegerField(default=1)
+
+
+'''
+Actividad -> Entidad del sistema
+Clase relacionada -> CD01 [Entity]
+Modelo Relacional -> EN05
+'''
+class Actividad(models.Model):
+    nombre = models.CharField(max_length=80)
+    evento = models.ForeignKey(Evento,  on_delete=models.CASCADE)
+    tipo = models.ForeignKey(TipoActividad, on_delete=models.CASCADE)
+    catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE, null=True)
+    ctlgos_restantes = models.IntegerField(default=1, null=True)
+
+    class Meta:
+        verbose_name_plural = "Actividades"
+
+    def __str__(self):
+        return f"{self.tipo}: {self.nombre}."
+
+
+'''
 Turno -> Entidad del sistema
 Clase relacionada -> CD44 [Entity]
+Modelo Relacional -> EN06
 '''
 class Turno(models.Model):
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)
@@ -91,17 +136,3 @@ class Turno(models.Model):
     def __str__(self):
         return f"{self.nombre}"
 
-
-'''
-Material -> Entidad del sistema 
-Clase relacionada -> CD37 [Entity]
-'''
-class Material(models.Model):
-    nombre = models.CharField(max_length=50)
-    descripcion = models.CharField(null=True, blank=True, max_length=100)
-
-    class Meta:
-        verbose_name_plural = "Materiales"
-
-    def __str__(self):
-        return f"{self.nombre}" 

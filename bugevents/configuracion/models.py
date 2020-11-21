@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils import timezone
 
-
 '''
+Código: CFG03
 Ambiente -> Entidad del sistema
 Clase relacionada -> CD24 [Entity]
-Modelo Relacional -> EN07
+Modelo Relacional -> MR07
 '''
 class Ambiente(models.Model):
     nombre = models.CharField(max_length=30)
@@ -15,11 +15,11 @@ class Ambiente(models.Model):
     def __str__(self):
         return f"{self.nombre}: Sala {self.ubicacion} con un aforo de {self.aforo} personas."
 
-
 '''
+Código: {CFG02, CFG04}
 Evento -> Entidad del sistema
 Clase relacionada -> CD83 [Entity]
-Modelo Relacional -> EN04
+Modelo Relacional -> MR04
 '''
 class Evento(models.Model):
     nombre = models.CharField(max_length=80)
@@ -32,7 +32,7 @@ class Evento(models.Model):
 
 
 '''
-Modelo Relacional -> EN23
+Modelo Relacional -> MR23
 '''
 class TipoActividad(models.Model):
     nombre_tipo = models.CharField(max_length=20)
@@ -44,11 +44,11 @@ class TipoActividad(models.Model):
     def __str__(self):
         return f"{self.nombre_tipo}"
 
-
 '''
+Código: CFG06
 Ponente -> Entidad del sistema
 Clase relacionada -> CD73 [Entity]
-Modelo Relacional -> EN09
+Modelo Relacional -> MR09
 '''
 class Ponente(models.Model):
     nombre = models.CharField(max_length=30)
@@ -62,11 +62,11 @@ class Ponente(models.Model):
     def __str__(self):
         return f"{self.apellido}, {self.nombre}"
 
-
 '''
+Código: CFG07
 Material -> Entidad del sistema 
 Clase relacionada -> CD37 [Entity]
-Modelo Relacional -> EN21
+Modelo Relacional -> MR21
 '''
 class Material(models.Model):
     nombre = models.CharField(max_length=50)
@@ -78,11 +78,11 @@ class Material(models.Model):
     def __str__(self):
         return f"{self.nombre}"
 
-
 '''
+Código: AST04
 Catalogo -> Entidad del sistema 
 Clase relacionada -> CD54 [Entity]
-Modelo Relacional -> EN19
+Modelo Relacional -> MR19
 '''
 class Catalogo(models.Model):
     descripcion = models.CharField(max_length=50)
@@ -93,18 +93,18 @@ class Catalogo(models.Model):
 
 
 '''
-Modelo Relacional -> EN20
+Modelo Relacional -> MR20
 '''
 class Item(models.Model):
     catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE)
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
     cantidad = models.IntegerField(default=1)
 
-
 '''
+Código: {AST04, AST02, CFG05, CFG02}
 Actividad -> Entidad del sistema
 Clase relacionada -> CD01 [Entity]
-Modelo Relacional -> EN05
+Modelo Relacional -> MR05
 '''
 class Actividad(models.Model):
     nombre = models.CharField(max_length=80)
@@ -119,11 +119,11 @@ class Actividad(models.Model):
     def __str__(self):
         return f"{self.tipo}: {self.nombre}."
 
-
 '''
+Código: CFG06
 Turno -> Entidad del sistema
 Clase relacionada -> CD44 [Entity]
-Modelo Relacional -> EN06
+Modelo Relacional -> MR06
 '''
 class Turno(models.Model):
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)

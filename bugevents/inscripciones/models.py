@@ -1,9 +1,10 @@
 from django.db import models
 from configuracion.models import Actividad
 
-
 '''
+Código: {INS05, INS06, INS07,INS08, INS09}
 Paquete -> Entidad del sistema
+Modelo Relacional -> MR11
 Clase relacionada -> CD17 [Entity]
 '''
 class Paquete(models.Model):
@@ -26,10 +27,11 @@ class TipoParticipante(models.Model):
         
     def __str__(self):
         return f"{self.nombre_tipo}"
-
-    
+  
 '''
+Código: {INS04, INS08, INS09}
 Promocion -> Entidad del sistema
+Modelo Relacional -> MR16
 clase relacionada -> CD07 [Entity]
 '''
 class Promocion(models.Model):

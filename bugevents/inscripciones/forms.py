@@ -3,8 +3,8 @@ from django.core.exceptions import ValidationError
 
 from .models import Paquete, Promocion
 
-
 '''
+Código: INS03
 PaqueteForm -> Creacion, modificacion y validacion de Paquetes
 Clase relacionada -> CD18 [Control]
 Casos de Uso relacionados -> {BE15, BE16}
@@ -19,8 +19,8 @@ class PaqueteForm(ModelForm):
         if precio_base < 0:
             raise ValidationError("El valor del precio base debe ser un número no negativo.")
 
-
 """
+Código: INS04
 Promoción ->creación, modificación de promociones
 clase relacionada ->CD08 [control]
 caso de Uso relacionado -> {BE17, BE18}

@@ -5,8 +5,8 @@ from django.core.exceptions import ValidationError
 
 from .models import Ambiente, Evento, Turno, Actividad, Item
 
-
 '''
+Código: CFG02
 EventoForm -> Creacion, modificacion y validacion de Eventos
 Clase relacionada -> CD85 [Control]
 Casos de Uso relacionados -> {BE04, BE05}
@@ -24,8 +24,8 @@ class EventoForm(ModelForm):
         if fecha_inicio > fecha_fin:
             raise ValidationError("La fecha de inicio no puede ser posterior a la fecha de fin.")
 
-
 '''
+Código: CFG03
 AmbienteForm -> Creacion, modificacion y validacion de Ambientes
 Clase relacionada -> CD25 [Control]
 Casos de Uso relacionados -> {BE07, BE08}
@@ -46,6 +46,7 @@ class AmbienteForm(ModelForm):
 
 
 '''
+Código: CFG06
 TurnoForm -> Formulario de creacion de Turnos
 Clase relacionada -> CD45 [Control]
 Casos de Uso relacionados -> {BE12}
@@ -61,9 +62,11 @@ class TurnoForm(ModelForm):
         if hora_inicio > hora_fin:
             raise ValidationError("La hora de inicio no puede ser posterior a la hora de fin.")
 
-
 '''
-
+Código: CFG05
+ActividadForm -> Formulario de creacion de Actividades
+Clase relacionada -> CD02 [Control]
+Casos de Uso relacionados -> {BE10, BE11}
 '''
 class ActividadForm(ModelForm):
     class Meta:

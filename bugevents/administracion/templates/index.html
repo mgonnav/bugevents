@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Administración Bugevents
+{% endblock %}
+
+{% block style %}
+h5 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-9 mx-auto">
+    <h5>Lista de {{ obj_name_plural }}:</h5>
+    <hr>
+    <div class="card card-body">
+      <a class="btn btn-primary btn-sm" href="{% block url_create %}{% endblock %}">A&ntilde;adir {{ obj_name_plural}}</a>
+      <table class="table table-sm">
+        <tr>
+        {% block field_names %}
+        {% endblock field_names %}
+        </tr>
+        {% block rows %}
+        {% endblock rows %}
+      </table>
+    </div>
+  </div>
+  {% include 'administracion/userinfo.html' %}
+</div>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% comment %} Clase de diseno relacionada: CD20 IndexAmbiente {% endcomment %}
+
+{% block field_names %}
+<th>Nombre</th>
+<th>Ubicaci&oacute;n</th>
+<th>Aforo</th>
+{% endblock %}
+
+{% block url_create %}
+{% url 'ambienteCreate' %}
+{% endblock %}
+
+{% block rows %}
+  {% for a in ambientes %}
+    <tr>
+      <th>{{ a.nombre }}</th>
+      <th>{{ a.ubicacion }}</th>
+      <th>{{ a.aforo }}</th>
+      <th>
+        <a href="{% url 'ambienteUpdate' a.id %}" class="btn btn-sm btn-info">Modificar</a>
+      </th>
+      <th>
+        <a href="{% url 'ambienteDelete' a.id %}" class="btn btn-sm btn-danger">Eliiminar</a>
+      </th>
+    </tr>
+  {% endfor %}
+{% endblock %}

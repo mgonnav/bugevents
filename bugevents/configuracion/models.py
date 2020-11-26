@@ -15,6 +15,10 @@ class Ambiente(models.Model):
     def __str__(self):
         return f"{self.nombre}: Sala {self.ubicacion} con un aforo de {self.aforo} personas."
 
+
+def one_day_hence():
+    return timezone.now() + timezone.timedelta(days=1)
+
 '''
 Código: {CFG02, CFG04}
 Evento -> Entidad del sistema
@@ -24,8 +28,8 @@ Modelo Relacional -> MR04
 class Evento(models.Model):
     nombre = models.CharField(max_length=80)
     ubicacion = models.CharField(max_length=60)
-    fecha_inicio = models.DateField(default=timezone.now)
-    fecha_fin = models.DateField(default=timezone.now)
+    fecha_inicio = models.DateField(default=one_day_hence)
+    fecha_fin = models.DateField(default=one_day_hence)
 
     def __str__(self):
         return f"Evento {self.nombre} con lugar en {self.ubicacion}."
@@ -100,6 +104,7 @@ class Item(models.Model):
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
     cantidad = models.IntegerField(default=1)
 
+
 '''
 Código: {AST04, AST02, CFG05, CFG02}
 Actividad -> Entidad del sistema
@@ -118,6 +123,7 @@ class Actividad(models.Model):
 
     def __str__(self):
         return f"{self.tipo}: {self.nombre}."
+
 
 '''
 Código: CFG06

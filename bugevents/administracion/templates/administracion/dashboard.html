@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Administración Bugevents
+{% endblock %}
+
+{% block style %}
+h5 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-9 mx-auto">
+    <h5>Próximos eventos:</h5>
+    <hr>
+    <div class="card card-body">
+      <a class="btn btn-primary btn-sm" href="{% url 'eventoCreate' %}">A&ntilde;adir evento</a>
+      <table class="table table-sm">
+        <tr>
+          <th>Evento</th>
+          <th>Ubicación</th>
+          <th>Inicio</th>
+          <th>Fin</th>
+        </tr>
+        {% for e in eventos %}
+          <tr>
+            <th>{{ e.nombre }}</th>
+            <th>{{ e.ubicacion }}</th>
+            <th>{{ e.fecha_inicio }}</th>
+            <th>{{ e.fecha_fin }}</th>
+            <th>
+              <a href="{% url 'eventoShow' e.id %}" class="btn btn-sm btn-info">
+                Ver
+              </a>
+            </th>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  {% include 'administracion/userinfo.html' %}
+</div>
+{% endblock %}

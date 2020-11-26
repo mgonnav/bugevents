@@ -1,9 +1,9 @@
 from datetime import date
 
-from django.forms import ModelForm, TextInput
+from django.forms import ModelForm, TextInput, DateInput
 from django.core.exceptions import ValidationError
 
-from .models import Ambiente, Evento, Turno, Actividad, Item
+from .models import *
 
 '''
 Código: CFG02
@@ -15,6 +15,10 @@ class EventoForm(ModelForm):
     class Meta:
         model = Evento
         fields = '__all__'
+        widgets = {
+            'fecha_inicio': DateInput(attrs={'class': 'datepicker'}),
+            'fecha_fin': DateInput(attrs={'class': 'datepicker'}),
+        }
 
     def clean(self):
         fecha_inicio = self.cleaned_data.get('fecha_inicio')
@@ -62,6 +66,18 @@ class TurnoForm(ModelForm):
         if hora_inicio > hora_fin:
             raise ValidationError("La hora de inicio no puede ser posterior a la hora de fin.")
 
+
+'''
+MaterialForm -> Formulario de creacion de Materiales
+Clase relacionada -> CD [Control]
+Casos de Uso relacionados -> {}
+'''
+class MaterialForm(ModelForm):
+    class Meta:
+        model = Material
+        fields = '__all__'
+
+
 '''
 Código: CFG05
 ActividadForm -> Formulario de creacion de Actividades
@@ -83,8 +99,6 @@ class ActividadForm(ModelForm):
             raise ValidationError("El valor de los catalogos debe ser un número positivo.")
 
 
-'''
-'''
 class ItemForm(ModelForm):
     class Meta:
         model = Item

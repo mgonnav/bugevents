@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% comment %} Clase de diseno relacionada: CD76 IndexPonente {% endcomment %}
+
+{% block field_names %}
+<th>Nombre</th>
+<th>Apellido</th>
+<th>Email</th>
+<th>Especialidad</th>
+{% endblock %}
+
+{% block url_create %}
+{% url 'ponenteCreate' %}
+{% endblock %}
+
+{% block rows %}
+  {% for m in ponentes %}
+    <tr>
+      <th>{{ m.nombre }}</th>
+      <th>{{ m.apellido }}</th>
+      <th>{{ m.email }}</th>
+      <th>{{ m.especialidad }}</th>
+      <th>
+        <a href="{% url 'ponenteUpdate' m.id %}" class="btn btn-sm btn-info">Modificar</a>
+      </th>
+      <th>
+        <a href="{% url 'ponenteDelete' m.id %}" class="btn btn-sm btn-danger">Eliiminar</a>
+      </th>
+    </tr>
+  {% endfor %}
+{% endblock %}

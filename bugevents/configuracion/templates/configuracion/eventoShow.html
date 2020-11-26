@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Administración Bugevents: Eventos
+{% endblock %}
+
+{% block style %}
+.row {
+  color: #000;
+}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-5">
+    <div class="card card-body">
+      <h5>Evento</h5>
+      <hr>
+      <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'eventoUpdate' evento.id %}">Modificar Evento</a>
+      <a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'eventoDelete' evento.id %}">Eliminar Evento</a>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card card-body">
+      <h5>Informaci&oacute;n del Evento</h5>
+      <hr>
+      <p>Nombre: {{ evento.nombre }}</p>
+      <p>Ubicaci&oacute;n: {{ evento.ubicacion }}</p>
+      <p>Inicio: {{ evento.fecha_inicio }}</p>
+      <p>Fin: {{ evento.fecha_fin }}</p>
+    </div>
+  </div>
+
+  {% include 'administracion/userinfo.html' %}
+</div>
+
+
+<br>
+<div class="row">
+  <div class="col">
+    <div class="card card-body">
+      <form method="get">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-md">
+    <div class="card card-body">
+      <h5>Actividades</h5>
+      <table class="table table-sm">
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th># Turnos</th>
+          <th>Modificar</th>
+          <th>Eliminar</th>
+        </tr>
+
+        {% for a in actividades %}
+          <tr>
+            <th>{{ a.nombre }}</th>
+            <th>{{ a.tipo }}</th>
+            <th>{{ a.turno_count }}</th>
+            <th><a href="" class="btn btn-sm btn-info">Modificar</a></th>
+            <th><a href="" class="btn btn-sm btn-danger">Eliminar</a></th>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

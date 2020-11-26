@@ -1,0 +1,12 @@
+<div class="col-md">
+  <div id="user__info__card" class="card card-body d-flex justify-content-center">
+    <span id="user__info__icon" class="text-center"><i class="fas fa-user"></i></span>
+    <hr>
+    <div class="card card-body pt-2 pb-2 mb-2">
+      <div class="card-text text-center">{{ request.user.get_full_name }}</div>
+    </div>
+    <div class="card card-body pt-2 pb-2">
+      <div class="card-text text-center">{{ request.user.groups.first }}</div>
+    </div>
+  </div>
+</div>

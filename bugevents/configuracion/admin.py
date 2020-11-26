@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Ambiente, Evento, Actividad, Ponente, Turno, Material, Catalogo, Item
-from .forms import AmbienteForm, EventoForm, TurnoForm, ActividadForm, ItemForm
+from .models import *
+from .forms import *
 
 
 class AmbienteAdmin(admin.ModelAdmin):

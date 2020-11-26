@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% comment %} Clase de diseno relacionada: CD41 IndexMaterial {% endcomment %}
+
+{% block field_names %}
+<th>Nombre</th>
+<th>Descripci&oacute;n</th>
+{% endblock %}
+
+{% block url_create %}
+{% url 'materialCreate' %}
+{% endblock %}
+
+{% block rows %}
+  {% for m in materiales %}
+    <tr>
+      <th>{{ m.nombre }}</th>
+      <th>{% if m.descripcion %}{{ m.descripcion }}{% else %}No especificado.{% endif %}</th>
+      <th>
+        <a href="{% url 'materialUpdate' m.id %}" class="btn btn-sm btn-info">Modificar</a>
+      </th>
+      <th>
+        <a href="{% url 'materialDelete' m.id %}" class="btn btn-sm btn-danger">Eliiminar</a>
+      </th>
+    </tr>
+  {% endfor %}
+{% endblock %}

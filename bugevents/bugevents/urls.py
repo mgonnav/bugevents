@@ -19,8 +19,10 @@ from django.views.generic.base import RedirectView
 from administracion import views as administracion_views
 
 urlpatterns = [
+    path('', administracion_views.loginPage),
     path('admin/', admin.site.urls),
     path('administracion/', include('administracion.urls')),
+    path('administracion/configuracion/', include('configuracion.urls')),
 ]
 
 admin.site.site_header = "Administración de Bugevents"

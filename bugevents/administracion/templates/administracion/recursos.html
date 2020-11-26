@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Administración Bugevents: Recursos
+{% endblock %}
+
+{% block style %}
+.list-group-item {
+  color: #000;
+  text-transform: capitalize;
+}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-9">
+    <ul class="list-group">
+      {% for r in recursos %}
+      <li class="list-group-item d-flex justify-content-between">
+        <span>{{ r }}</span>
+        <a class="btn btn-sm btn-info" href="{{ r }}">+ A&ntilde;adir</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  {% include 'administracion/userinfo.html' %}
+</div>
+{% endblock %}

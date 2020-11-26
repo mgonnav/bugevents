@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'widget_tweaks',
     'inscripciones',
     'administracion',
 ]
@@ -127,6 +128,8 @@ USE_L10N = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+]
 
 # SMTP Configuration
 EMAIL_BACKEND = env('EMAIL_BACKEND')

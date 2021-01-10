@@ -18,6 +18,7 @@ Administración Bugevents: Eventos
       <hr>
       <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'eventoUpdate' evento.id %}">Modificar Evento</a>
       <a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'eventoDelete' evento.id %}">Eliminar Evento</a>
+      <a class="btn btn-outline-primary  btn-sm btn-block" href="{% url 'actividadCreate' evento.id %}">A&ntilde;adir Actividad</a>
     </div>
   </div>
 
@@ -66,8 +67,8 @@ Administración Bugevents: Eventos
             <th>{{ a.nombre }}</th>
             <th>{{ a.tipo }}</th>
             <th>{{ a.turno_count }}</th>
-            <th><a href="" class="btn btn-sm btn-info">Modificar</a></th>
-            <th><a href="" class="btn btn-sm btn-danger">Eliminar</a></th>
+            <th><a href="{% url 'actividadUpdate' evento.id a.id %}" class="btn btn-sm btn-info">Modificar</a></th>
+            <th><a href="{% url 'actividadDelete' evento.id a.id %}" class="btn btn-sm btn-danger">Eliminar</a></th>
           </tr>
         {% endfor %}
       </table>

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Administración Bugevents: Adaptar evento
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-9 mx-auto">
+    <h5>Eventos pasados:</h5>
+    <hr>
+    <div class="card card-body">
+      <table class="table table-sm">
+        <tr>
+          <th>Evento</th>
+          <th>Ubicación</th>
+          <th># Actividades</th>
+          <th>Inicio</th>
+          <th>Fin</th>
+        </tr>
+        {% for e in eventos %}
+          <tr>
+            <th>{{ e.nombre }}</th>
+            <th>{{ e.ubicacion }}</th>
+            <th>{{ e.actividad_count }}</th>
+            <th>{{ e.fecha_inicio }}</th>
+            <th>{{ e.fecha_fin }}</th>
+            <th>
+              <a href="{% url 'eventoAdaptar' e.id %}" class="btn btn-sm btn-info">
+                Adaptar
+              </a>
+            </th>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  {% include 'administracion/userinfo.html' %}
+</div>
+
+{% endblock %}

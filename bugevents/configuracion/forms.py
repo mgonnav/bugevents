@@ -87,16 +87,7 @@ Casos de Uso relacionados -> {BE10, BE11}
 class ActividadForm(ModelForm):
     class Meta:
         model = Actividad
-        fields = '__all__'
-        widgets = {
-            'ctlgos_restantes': TextInput(attrs={"type": "number",
-                                      "min": "1"})
-        }
-
-    def clean(self):
-        c_restantes = self.cleaned_data.get('ctlgos_restantes')
-        if c_restantes < 1:
-            raise ValidationError("El valor de los catalogos debe ser un número positivo.")
+        fields = {'evento', 'nombre', 'tipo', 'catalogo'}
 
 
 class ItemForm(ModelForm):

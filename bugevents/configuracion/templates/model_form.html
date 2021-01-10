@@ -17,6 +17,7 @@ Administración Bugevents:
 <h3 class="font-weight-bold">
   {% if object %}Modificar{% else %}Crear{% endif %} {{ form|modelform_title }}
 </h3>
+<hr />
 
 {% if form.errors %}
   {% for field in form %}
@@ -31,6 +32,14 @@ Administración Bugevents:
       <strong>{{ error }}</strong>
     </div>
   {% endfor %}
+{% endif %}
+
+{% if form|modelform_title == 'Evento' %}
+<div class="row mb-2">
+  <div class="col-md-5">
+    <a class="btn btn-info btn-block" href="{% url 'eventoAdaptarIndex' %}">Adaptar un evento pasado</a>
+  </div>
+</div>
 {% endif %}
 
 <div class="row">
